@@ -57,7 +57,7 @@ contract OptimisticOracle {
 
     // ===== External Functions =====
     function propose(bytes32 id, Outcome outcome) external {
-        if (proposals[id].timestamp == 0) {
+        if (proposals[id].timestamp != 0) {
             revert OptimisticOracle__AlreadyProposed();
         }
         if (outcome == Outcome.NONE) {
